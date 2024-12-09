@@ -18,14 +18,14 @@ class DiceGame:
         return [random.randint(1, 6) for _ in range(num_dice)]
         
     def visualize_scores(self):
-    """Visualize the current scores using a bar chart."""
-    plt.figure(figsize=(8, 5))
-    sns.barplot(x=list(self.scores.keys()), y=list(self.scores.values()), palette="viridis")
-    plt.title("Player Scores")
-    plt.xlabel("Players")
-    plt.ylabel("Scores")
-    plt.ylim(0, self.target_score)  # Ensure y-axis corresponds to the target score
-    plt.show()
+        """Visualize the current scores using a bar chart."""
+        plt.figure(figsize=(8, 5))
+        sns.barplot(x=list(self.scores.keys()), y=list(self.scores.values()), palette="viridis")
+        plt.title("Player Scores")
+        plt.xlabel("Players")
+        plt.ylabel("Scores")
+        plt.ylim(0, self.target_score)
+        plt.show()
    
     def play_turn(self, player):
         """Simulate a single turn for a player."""
@@ -68,6 +68,9 @@ class DiceGame:
                 score = self.play_turn(player)
                 self.scores[player] += score
                 print(f"{player}'s total score: {self.scores[player]}")
+
+                #Visualize the scores after each turn
+                self.visualize_scores()
 
                 # Check for a winner
                 if self.scores[player] >= self.target_score:
