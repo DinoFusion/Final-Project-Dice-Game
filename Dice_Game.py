@@ -1,4 +1,6 @@
 import random
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 class DiceGame:
     def __init__(self, target_score):
