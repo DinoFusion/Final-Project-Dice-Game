@@ -86,6 +86,10 @@ class DiceGame:
 
                 #Visualize the scores after each turn
                 self.visualize_scores()
+                
+                # Analyze the scores periodically
+                if len(self.score_history) % len(self.players) == 0:  # After each round
+                    self.analyze_scores()
 
                 # Check for a winner
                 if self.scores[player] >= self.target_score:
