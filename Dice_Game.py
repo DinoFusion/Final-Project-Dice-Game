@@ -48,6 +48,7 @@ class DiceGame:
             # Check for "tupled out" condition
             if len(set(dice)) == 1:  # All dice have the same value
                 print(f"Tupled out! {player} scores 0 points this turn.")
+                self.record_score(player, 0)
                 return 0
 
             # Fix dice with the same value
@@ -58,6 +59,7 @@ class DiceGame:
             # If all dice are fixed, player must stop
             if num_fixed == 3:
                 print(f"{player} scores {sum(dice)} points.")
+                self.record_score(player, sum(dice))
                 return sum(dice)
 
             # Allow player to reroll unfixed dice
@@ -70,6 +72,7 @@ class DiceGame:
                 print(f"New dice: {dice}")
             else:
                 print(f"{player} decides to stop and scores {sum(dice)} points.")
+                self.record_score(player, sum(dice))
                 return sum(dice)
                 
     def record_score(self, player, score):
@@ -95,6 +98,7 @@ class DiceGame:
                 # Check for a winner
                 if self.scores[player] >= self.target_score:
                     print(f"\n{player} wins the game with {self.scores[player]} points!")
+                    self.analyze_scores()  # Final analysis
                     return
 
 # Game setup
