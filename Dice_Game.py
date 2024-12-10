@@ -1,6 +1,8 @@
 import random
 import seaborn as sns
 import matplotlib.pyplot as plt
+import pandas as pd  
+import numpy as np
 
 class DiceGame:
     def __init__(self, target_score):
@@ -26,6 +28,13 @@ class DiceGame:
         plt.ylabel("Scores")
         plt.ylim(0, self.target_score)
         plt.show()
+    def analyze_scores(self):
+        """Analyze the score history and print statistics."""
+        print("\nScore Analysis:")
+        if not self.score_history.empty:
+            print(self.score_history.groupby('Player')['Score'].agg([np.sum, np.mean, np.max]))
+        else:
+            print("No score data available.")
    
     def play_turn(self, player):
         """Simulate a single turn for a player."""
@@ -60,6 +69,10 @@ class DiceGame:
             else:
                 print(f"{player} decides to stop and scores {sum(dice)} points.")
                 return sum(dice)
+    def record_score(self, player, score):
+        """Record the score for data analysis."""
+        new_entry = {'Turn': len(self.score_history) + 1, 'Player': player, 'Score': score}
+        self.score_history = pd.concat([self.score_history, pd.DataFrame([new_entry])], ignore_index=True)
 
     def play_game(self):
         """Run the game until a player reaches the target score."""
