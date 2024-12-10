@@ -13,3 +13,6 @@ Data Visualization:
 - A bar chart dynamically updates to show player scores after each turn.
 -Visualization uses the Seaborn library for a clear and appealing display.
 
+## Visualization
+-After each player's turn, a bar chart displays the current scores of all players.
+-The chart updates dynamically to reflect the latest scores.
