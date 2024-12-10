@@ -16,3 +16,11 @@ Data Visualization:
 ## Visualization
 - After each player's turn, a bar chart displays the current scores of all players.
 - The chart updates dynamically to reflect the latest scores.
+  
+## Data Analysis
+-Scores from each turn are recorded in a Pandas DataFrame.
+-After each round, the program provides a summary of:
+-Total scores per player.
+-Average (mean) scores per player.
+-Maximum score achieved in a single turn for each player.
+-A final summary is displayed at the end of the game.
