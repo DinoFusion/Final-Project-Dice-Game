@@ -9,6 +9,7 @@ class DiceGame:
         self.target_score = target_score
         self.players = []
         self.scores = {}
+        self.score_history = pd.DataFrame(columns=['Turn', 'Player', 'Score'])  # Track score history
 
     def add_player(self, player_name):
         """Add a player to the game."""
