@@ -28,6 +28,7 @@ class DiceGame:
         plt.ylabel("Scores")
         plt.ylim(0, self.target_score)
         plt.show()
+        
     def analyze_scores(self):
         """Analyze the score history and print statistics."""
         print("\nScore Analysis:")
@@ -69,6 +70,7 @@ class DiceGame:
             else:
                 print(f"{player} decides to stop and scores {sum(dice)} points.")
                 return sum(dice)
+                
     def record_score(self, player, score):
         """Record the score for data analysis."""
         new_entry = {'Turn': len(self.score_history) + 1, 'Player': player, 'Score': score}
